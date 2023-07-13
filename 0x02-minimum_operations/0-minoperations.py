@@ -1,6 +1,7 @@
 def minOperations(n):
     """
-    Calculates the fewest number of operations needed to achieve exactly n 'H' characters in the file.
+    Calculates the fewest number of operations \
+        needed to achieve exactly n 'H' characters in the file.
 
     Arguments:
     - n: An integer representing the desired number of 'H' characters.
@@ -8,11 +9,12 @@ def minOperations(n):
     Returns:
     - An integer representing the minimum number of operations needed.
 
-    If it is impossible to achieve the desired number of 'H' characters, the function returns 0.
+    If it is impossible to achieve the desired number\
+        of 'H' characters, the function returns 0.
     """
     if n <= 1:
         return 0
-    
+
     operations = 0
     factor = 2
 
