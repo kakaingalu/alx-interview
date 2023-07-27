@@ -14,20 +14,20 @@ def validUTF8(data):
     Returns:
         boolean: True if data is a valid UTF-8 encoding
      """
-    count = 0
-    for num in data:
-        if count == 0:
-            match num:
-                case _ if (num >> 5) == 0b110:
-                    count = 1
-                case _ if (num >> 4) == 0b1110:
-                    count = 2
-                case _ if (num >> 3) == 0b11110:
-                    count = 3
-                case _ if (num >> 7) != 0:
+    con = 0
+    for i in data:
+        if con == 0:
+            match i:
+                case _ if (i >> 5) == 0b110:
+                    con = 1
+                case _ if (i >> 4) == 0b1110:
+                    con = 2
+                case _ if (i >> 3) == 0b11110:
+                    con = 3
+                case _ if (i >> 7) != 0:
                     return False
         else:
-            if (num >> 6) != 0b10:
+            if (i >> 6) != 0b10:
                 return False
-            count -= 1
-    return count == 0
+            con -= 1
+    return con == 0
