@@ -2,6 +2,7 @@
 
 import sys
 
+
 def is_safe(board, row, col, N):
     """
     Check if it is safe to place a queen at a given position on the chessboard.
@@ -32,9 +33,11 @@ def is_safe(board, row, col, N):
 
     return True
 
+
 def nqueens_util(board, row, N, solutions):
     """
-    Recursive utility function to find all possible solutions for the N Queens problem.
+    Recursive utility function to find all possible solutions for \
+        the N Queens problem.
 
     Parameters:
         board (list[list[int]]): The current state of the chessboard.
@@ -47,15 +50,18 @@ def nqueens_util(board, row, N, solutions):
     """
     if row == N:
         # A solution is found when the queens are placed in all rows.
-        solutions.append([[i, j] for i in range(N) for j in range(N) if board[i][j] == 1])
+        solutions.append(
+            [[i, j] for i in range(N) for j in range(N) if board[i][j] == 1])
     else:
         for col in range(N):
             if is_safe(board, row, col, N):
-                # Place the queen and call the function recursively for the next row.
+                # Place the queen and call the function recursively for the\
+                # next row.
                 board[row][col] = 1
                 nqueens_util(board, row+1, N, solutions)
                 # Backtrack and remove the queen from the current position.
                 board[row][col] = 0
+
 
 def nqueens(N):
     """
@@ -81,6 +87,7 @@ def nqueens(N):
 
     for solution in solutions:
         print(solution)
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
