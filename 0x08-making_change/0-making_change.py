@@ -15,6 +15,9 @@ def makeChange(coins, total):
            fewest number of coins needed
            to meet total
     """
+    if total <= 0:
+        return 0
+    
     coins.sort(reverse=True)  # Sort coins in descending order
     coin_count = 0
     remaining_total = total
