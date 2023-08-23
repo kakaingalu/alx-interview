@@ -15,28 +15,16 @@ def makeChange(coins, total):
            fewest number of coins needed
            to meet total
     """
-    memo = {}  # Dictionary for memoization
+    coins.sort(reverse=True)  # Sort coins in descending order
+    coin_count = 0
+    remaining_total = total
 
-    def minCoins(amount):
-        if amount in memo:
-            return memo[amount]
+    for coin in coins:
+        while remaining_total >= coin:
+            remaining_total -= coin
+            coin_count += 1
 
-        if amount == 0:
-            return 0
-
-        min_count = float('inf')
-
-        for coin in coins:
-            if coin <= amount:
-                count = 1 + minCoins(amount - coin)
-                min_count = min(min_count, count)
-
-        memo[amount] = min_count
-        return min_count
-
-    result = minCoins(total)
-
-    if result == float('inf'):
-        return -1
+    if remaining_total == 0:
+        return coin_count
     else:
-        return result
+        return -1
